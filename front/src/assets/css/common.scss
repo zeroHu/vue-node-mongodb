@@ -1,0 +1,33 @@
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+input {
+    width: 200px;
+    height: 22px;
+    line-height: 22px;
+}
+
+textarea {
+    border-color: #daeae8;
+}
+body {
+    background: #f8f8f7;
+}
+
+.router-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: #12937c;
+}
+
+.page-wrapper{
+    margin-top: 50px;
+}
