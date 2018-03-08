@@ -14,7 +14,7 @@ const addCommentTitle = (req, res) => {
                 // 存储用户信息
                 let commentTitleData = new CommentTitle({
                     ctitle: req.query.ctitle,
-                    createUser: req.session.name
+                    createUser: { userId: req.session.userId, userName: req.session.name }
                 });
                 commentTitleData.save(function(err, doc) {
                     if (err) {
@@ -42,12 +42,31 @@ const showCommentTitle = (req, res) => {
 
 // 添加评论话题
 const addUserComment = (req, res) => {
-
+    if (req.session && req.session.name) {
+        let userCommentData = new UserComment({
+            content: req.body.content,
+            commentTitle: { titleId: req.body.titleid, content: req.body.titlename },
+            createUser: { userId: req.session.userId, userName: req.session.name }
+        });
+        userCommentData.save((err, doc) => {
+            if (err) {
+                res.json(Rjson.error());
+                return;
+            }
+            res.json(Rjson.right([], '添加评论成功'))
+        })
+    }
 }
 
 // 展示话题的所有的评论
 const showUserComment = (req, res) => {
-
+    Util.QueryDataBase({ "commentTitle.titleId":  req.query.titleid }, UserComment).then(findData => {
+        if (findData && findData.length > 0) {
+            res.json(Rjson.right(findData));
+        } else {
+            res.json(Rjson.error('sorry~ 没有搜索到数据'));
+        }
+    });
 }
 
 

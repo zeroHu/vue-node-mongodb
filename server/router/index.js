@@ -29,7 +29,8 @@ router.get('/clearLogin', users.clearLogin);
 // 评论相关
 router.get('/addcotit', comments.addCommentTitle);
 router.get('/showcotit', comments.showCommentTitle);
-
+router.post('/addcomment', comments.addUserComment);
+router.get('/showcomment', comments.showUserComment);
 // 导出router
 exports = module.exports = router;
 

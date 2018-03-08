@@ -3,7 +3,7 @@
         <v-header></v-header>
         <div class="comment-title-content">
             <ul>
-                <li v-for="item in commTitle" @click="routerDetail(item._id)">{{ item.ctitle }} >>></li>
+                <li v-for="item in commTitle" @click="routerDetail(item._id, item.ctitle)">{{ item.ctitle }} >>></li>
             </ul>
         </div>
     </div>
@@ -29,8 +29,8 @@ export default {
         }
     },
     methods: {
-        routerDetail (id) {
-            this.$router.push(`/commentdetail?id=${id}`)
+        routerDetail (id, name) {
+            this.$router.push(`/commentdetail?id=${id}&name=${name}`)
         }
     }
 }

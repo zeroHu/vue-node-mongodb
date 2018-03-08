@@ -5,28 +5,19 @@
             <div class="title-comment">
                 <h4>话题</h4>
                 <div class="main">
-                    <p>小仙女为啥自称为小仙女</p>
+                    <p>{{ cName }}</p>
                 </div>
             </div>
-            <div class="user-commet">
+            <div class="user-commet" v-show="uCommentInfo.length > 0">
                 <h4>评论区</h4>
                 <div class="main">
-                    <div class="each">
+                    <div class="each" v-for="item in uCommentInfo">
                         <p class="u-detail">
-                        讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点
+                            {{ item.content }}
                         </p>
                         <p class="c-info">
-                            <span>zero</span>
-                            <span>2016/12/12 12:00</span>
-                        </p>
-                    </div>
-                    <div class="each">
-                        <p class="u-detail">
-                        讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点讨论第一人的观点
-                        </p>
-                        <p class="c-info">
-                            <span>zero</span>
-                            <span>2016/12/12 12:00</span>
+                            <span>{{ item.createUser.userName }}</span>
+                            <span>{{ item.createTime }}</span>
                         </p>
                     </div>
                 </div>
@@ -34,7 +25,7 @@
             <div class="commit-comment">
                 <h4>发表吧</h4>
                 <div class="c-content">
-                    <textarea name="" id="" cols="30" rows="5"></textarea>
+                    <textarea name="" id="" cols="30" rows="5" v-model="uComment"></textarea>
                     <button class="submit" @click="sendComment">提交</button>
                 </div>
             </div>
@@ -47,12 +38,36 @@ export default {
     components: {
         vHeader
     },
+    data () {
+        return {
+            cId: '',
+            cName: '',
+            uComment: '',
+            uCommentInfo: []
+        }
+    },
+    mounted () {
+        this.cId = this.$route.query && this.$route.query.id
+        this.cName = this.$route.query && this.$route.query.name
+        console.log('--------*******', this.cId)
+        // 请求数据
+        this.$axios.get(`/api/showcomment?titleid=${this.cId}`).then(res => {
+            if (res.data.status === 0) {
+                this.uCommentInfo = res.data.data
+            }
+        })
+    },
     methods: {
         sendComment () {
-            this.$axios.get('/api/commitComment', {
-
+            this.$axios.post('/api/addcomment', {
+                content: this.uComment,
+                titleid: this.cId || '',
+                titlename: this.cName || ''
             }).then(res => {
-
+                if (res.data.status === 0){
+                    alert('添加评论成功')
+                    this.$router.go(0)
+                }
             })
         }
     }
