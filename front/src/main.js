@@ -3,16 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from 'axios'
 import store from './vuex/store.js'
+import axios from './assets/js/axiosConfig.js'
 
 
 Vue.config.productionTip = false
 
 // 设置axios
-Vue.prototype.$axios = axios.create({
-    timeout: 100000
-})
+Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */
 new Vue({

@@ -49,9 +49,8 @@ export default {
     mounted () {
         this.cId = this.$route.query && this.$route.query.id
         this.cName = this.$route.query && this.$route.query.name
-        console.log('--------*******', this.cId)
         // 请求数据
-        this.$axios.get(`/api/showcomment?titleid=${this.cId}`).then(res => {
+        this.$axios.get(`/showcomment?titleid=${this.cId}`).then(res => {
             if (res.data.status === 0) {
                 this.uCommentInfo = res.data.data
             }
@@ -59,7 +58,7 @@ export default {
     },
     methods: {
         sendComment () {
-            this.$axios.post('/api/addcomment', {
+            this.$axios.post('/addcomment', {
                 content: this.uComment,
                 titleid: this.cId || '',
                 titlename: this.cName || ''

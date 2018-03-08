@@ -38,7 +38,7 @@ export default {
   methods: {
     // 登录
     doLogin () {
-      this.$axios.post('/api/login', {
+      this.$axios.post('/login', {
         name: this.name,
         password: hex_sha1(this.password)
       }).then(res => {
@@ -53,7 +53,7 @@ export default {
     },
     // 注册
     doRegist () {
-      this.$axios.post('/api/regist', {
+      this.$axios.post('/regist', {
         name: this.name,
         password: hex_sha1(this.password)
       }).then(res => {

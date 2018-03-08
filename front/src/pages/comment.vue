@@ -15,11 +15,11 @@ export default {
         vHeader
     },
     mounted () {
-        this.$axios.get('/api/showcotit').then(res => {
+        this.$axios.get('/showcotit').then(res => {
             if (res.data.status === 0) {
                 this.commTitle = res.data.data
             } else {
-                alert(res.data.msg)
+                console.log('展示没有话题，或者接口出现异常')
             }
         });
     },

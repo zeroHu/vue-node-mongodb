@@ -14,7 +14,7 @@
     export default {
         methods: {
             clearLogin () {
-                this.$axios.get('/api/clearLogin').then(res => {
+                this.$axios.get('/clearLogin').then(res => {
                     if (res.data.status === 0) {
                         this.$store.commit('storeStatus', null)
                         alert(res.data.msg);

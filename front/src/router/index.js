@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
   let userInfo = Store.state.loginStatus
   // 如果vuex 没有存储用户信息的时候去请求session里面是否有用户登录信息
   if (!userInfo) {
-    Axios.get('/api/userInfo').then(res => {
+    Axios.get('/userInfo').then(res => {
       // 储存用户信息
       if (res.data.status === 0) {
         Store.commit('storeStatus', res.data.data)
