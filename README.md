@@ -41,7 +41,7 @@ server {
 
     server_name vue.zeroyh.cn;
 
-    # https 可选配置停止
+    # https 配置 如果 http 可不加
     ssl_certificate /etc/nginx/ssl/vue.zeroyh.cn.crt;
     ssl_certificate_key /etc/nginx/ssl/vue.zeroyh.cn.key;
 
