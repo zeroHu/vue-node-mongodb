@@ -1,5 +1,6 @@
 
 # 想来用vue 和 node 和 mongodb 做一个完整的系统
+** 项目持续开发中。。。还未完成。敬请期待~ **
 ### 目录结构
 ```
 | front  (vue 搭建的前端 router 由前端控制)
@@ -19,9 +20,11 @@ README.md
 ```
 ### 运行需要
 ```
-1. 安装mongodb数据库
-2. 安装redis
-3. npm install 安装包
+1. 安装 mongodb 数据库
+2. 安装 redis
+3. npm install || yarn install 安装依赖包
+4. npm run fdev (前端代码跑起来)
+5. npm run sdev (后端sever跑起来)
 ```
 ### 服务器端nginx配置
 ```nginx
@@ -63,10 +66,18 @@ server {
 ### 体验地址
 [尬聊系统体验链接](http://vue.zeroyh.cn/)
 
-### 完成的功能
+### 已完成的功能
 1. 登录功能
 2. 评论话题功能
+
+### 未完成功能
+1. 菜谱
+2. 评论分页
+3. ... (未想好)
 
 ### 详情介绍
 1. front 运用了vue 框架，vux记录登录状态，vue-router路由管理 axios 网络请求
 2. server 运用了express框架，输出api接口，与mongodb 数据库数据交互
+
+### 最后附上网站首页[美图]一张
+![首页美图](http://oqt0cgoq9.bkt.clouddn.com/vue-express.jpg)
