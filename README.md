@@ -23,8 +23,9 @@ README.md
 1. 安装 mongodb 数据库
 2. 安装 redis
 3. npm install || yarn install 安装依赖包
-4. npm run fdev (前端代码跑起来)
-5. npm run sdev (后端sever跑起来)
+4. npm run sdev (后端server跑起来)
+5. npm run fdev (前端vue跑起来)
+6. 打开 localhost:3050
 ```
 ### 服务器端nginx配置
 ```nginx
