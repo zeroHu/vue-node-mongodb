@@ -23,6 +23,43 @@ README.md
 2. 安装redis
 3. npm install 安装包
 ```
+### 服务器端nginx配置
+```nginx
+# 直接上原封不动的nginx配置
+upstream vuenode {
+    server 127.0.0.1:3040;
+    keepalive 64;
+}
+server {
+    listen 80;
+    # https 配置 如果 http 可不加
+    listen 443 ssl;
+
+    server_name vue.zeroyh.cn;
+
+    # https 可选配置停止
+    ssl_certificate /etc/nginx/ssl/vue.zeroyh.cn.crt;
+    ssl_certificate_key /etc/nginx/ssl/vue.zeroyh.cn.key;
+
+    # 配置根目录路劲
+    location / {
+        root /data/vue-node-mongodb/front/dist;
+        try_files $uri $uri/ /index.html =404;
+    }
+    # 配置 express api
+    location /api {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_max_temp_file_size 0;
+        proxy_pass http://vuenode/api; #转发配置
+        proxy_redirect off;
+        proxy_read_timeout 240s;
+    }
+}
+```
 ### 体验地址
 [尬聊系统体验链接](http://vue.zeroyh.cn/)
 
