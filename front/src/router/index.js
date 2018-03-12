@@ -1,28 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/pages/login'
-import Index from '@/pages/index'
-import Comment from '@/pages/comment'
-import CommentDetail from '@/pages/commentDetail'
 import Store from '@/vuex/store'
 import Axios from 'axios'
 
 Vue.use(Router)
 
+const Index = r => require.ensure([], () => r(require('@/pages/index')), 'Index')
+const Login = r => require.ensure([], () => r(require('@/pages/login')), 'Login')
+const Comment = r => require.ensure([], () => r(require('@/pages/comment')), 'Comment')
+const CommentDetail = r => require.ensure([], () => r(require('@/pages/commentDetail')), 'CommentDetail')
 
 const router = new Router({
   mode: 'history',
   routes: [{
-      path: '/login',
-      name: 'Login',
-      component: Login,
+      path: '/',
+      name: 'Index',
+      component: Index,
       meta: {
         auth: false // 是否需要验证
       }
     }, {
-      path: '/',
-      name: 'Index',
-      component: Index,
+      path: '/login',
+      name: 'Login',
+      component: Login,
       meta: {
         auth: false // 是否需要验证
       }
