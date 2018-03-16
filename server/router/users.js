@@ -19,10 +19,12 @@ const adduser = (req, res) => {
         if (findData && findData.length > 0) {
             res.json(Rjson.error('这个网名已经有人使用了，请换一个~'));
         } else {
+            let level = req.body.name === 'root' ? 'root' : 'normal'
             // 存储用户信息
             let userdata = new Users({
                 name: req.body.name,
-                password: req.body.password
+                password: req.body.password,
+                level: level
             });
             userdata.save(function(err, doc) {
                 if (err) {
@@ -37,7 +39,7 @@ const adduser = (req, res) => {
 // 获取用户信息
 const userInfo = (req, res) => {
     if (req.session && req.session.name) {
-        res.json(Rjson.right({ name: req.session.name }, '登录成功'))
+        res.json(Rjson.right({ "name": req.session.name, "level": req.session.level }, '登录成功'))
     } else {
         res.json(Rjson.error('您还未登录'))
     }
@@ -54,6 +56,7 @@ const login = (req, res) => {
                 } else {
                     req.session.userId = findData[0]._id;
                     req.session.name = findData[0].name;
+                    req.session.level = findData[0].level;
                     res.json(Rjson.right([], '登录成功'));
                 }
             })
@@ -67,6 +70,7 @@ const clearLogin = (req, res) => {
     res.clearCookie('connect.sid');
     req.session.userId = null;
     req.session.name = null;
+    req.session.level = null;
     req.session.regenerate(function() {
         //重新生成session之后后续的处理
         res.json(Rjson.right([], '退出登录成功'));

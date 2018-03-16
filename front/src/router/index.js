@@ -9,6 +9,7 @@ const Index = r => require.ensure([], () => r(require('@/pages/index')), 'Index'
 const Login = r => require.ensure([], () => r(require('@/pages/login')), 'Login')
 const Comment = r => require.ensure([], () => r(require('@/pages/comment')), 'Comment')
 const CommentDetail = r => require.ensure([], () => r(require('@/pages/commentDetail')), 'CommentDetail')
+const Root = r => require.ensure([], () => r(require('@/pages/root')), 'Root')
 
 const router = new Router({
   mode: 'history',
@@ -38,6 +39,12 @@ const router = new Router({
       meta: {
         auth: true // 是否需要验证
       }
+    }, {
+      path: '/root',
+      component: Root,
+      meta: {
+        auth: true // 是否需要验证
+      }
     }]
 });
 
@@ -50,6 +57,7 @@ router.beforeEach((to, from, next) => {
       // 储存用户信息
       if (res.data.status === 0) {
         Store.commit('storeStatus', res.data.data)
+        Store.commit('isRootStatus', res.data.data.level === 'root' ? true : false)
       }
       // 需要校验的路由
       if (to.matched.some( m => m.meta.auth) && !Store.state.loginStatus) {

@@ -11,7 +11,8 @@
             <div class="user-commet" v-show="uCommentInfo.length > 0">
                 <h4>评论区</h4>
                 <div class="main">
-                    <div class="each" v-for="item in uCommentInfo">
+                    <div class="each" v-for="(item, index) in uCommentInfo">
+                        <span class="tags">{{ index+1 }}楼</span>
                         <p class="u-detail">
                             {{ item.content }}
                         </p>
@@ -64,8 +65,9 @@ export default {
                 titlename: this.cName || ''
             }).then(res => {
                 if (res.data.status === 0){
-                    alert('添加评论成功')
-                    this.$router.go(0)
+                    setTimeout(() => {
+                        this.$router.go(0)
+                    }, 2500)
                 }
             })
         }
@@ -101,6 +103,7 @@ export default {
                 border-bottom: 1px solid #daeae8;
                 padding-bottom: 12px;
                 padding-top: 12px;
+                position: relative;
                 &:first-child {
                     padding-top: 0;
                 }
@@ -110,6 +113,13 @@ export default {
                 .c-info {
                     color: #aaa;
                     text-align: right;
+                }
+                .tags {
+                    position: absolute;
+                    left: -15px;
+                    top: -15px;
+                    font-size: 12px;
+                    color: #ff9090;
                 }
             }
         }

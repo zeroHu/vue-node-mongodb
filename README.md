@@ -70,15 +70,20 @@ server {
 ### 已完成的功能
 1. 登录功能
 2. 评论话题功能
+3. 管理员管理话题
 
 ### 未完成功能
 1. 菜谱
 2. 评论分页
-3. ... (未想好)
+3. dialog toast 等组件封装
+4. ... (未想好)
 
 ### 详情介绍
 1. front 运用了vue 框架，vux记录登录状态，vue-router路由管理 axios 网络请求
 2. server 运用了express框架，输出api接口，与mongodb 数据库数据交互
 
-### 最后附上网站首页[美图]一张
-![首页美图](http://oqt0cgoq9.bkt.clouddn.com/vue-express.jpg)
+### 最后附上网站首页[美图]几张
+![首页美图1](http://oqt0cgoq9.bkt.clouddn.com/vue-express.jpg)
+![首页美图2](http://oqt0cgoq9.bkt.clouddn.com/vue-express2.jpg)
+![首页美图3](http://oqt0cgoq9.bkt.clouddn.com/vue-express3.jpg)
+![首页美图4](http://oqt0cgoq9.bkt.clouddn.com/vue-express4.jpg)

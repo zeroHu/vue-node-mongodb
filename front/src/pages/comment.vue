@@ -3,7 +3,9 @@
         <v-header></v-header>
         <div class="comment-title-content">
             <ul>
-                <li v-for="item in commTitle" @click="routerDetail(item._id, item.ctitle)">{{ item.ctitle }} >>></li>
+                <li v-for="(item, index) in commTitle" @click="routerDetail(item._id, item.ctitle)">
+                    {{ item.ctitle }} >>>
+                </li>
             </ul>
         </div>
     </div>

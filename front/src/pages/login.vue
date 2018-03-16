@@ -59,6 +59,7 @@ export default {
       }).then(res => {
         if (res.data.status === -1) {
           this.name = '';
+          this.password = '';
         } else {
           this.name = '';
           this.password = '';

@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 // 用户表
 let UesrSchema = new mongoose.Schema({
     name: String,
-    password: String
+    password: String,
+    level: String
 });
 
 // 评论话题表

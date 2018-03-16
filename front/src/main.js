@@ -6,7 +6,6 @@ import router from './router'
 import store from './vuex/store.js'
 import axios from './assets/js/axiosConfig.js'
 
-
 Vue.config.productionTip = false
 
 // 设置axios

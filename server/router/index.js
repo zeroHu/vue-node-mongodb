@@ -31,6 +31,8 @@ router.get('/addcotit', comments.addCommentTitle);
 router.get('/showcotit', comments.showCommentTitle);
 router.post('/addcomment', comments.addUserComment);
 router.get('/showcomment', comments.showUserComment);
+router.post('/updatecomment', comments.updateCommentTitle);
+router.post('/deletecommenttitle', comments.deleteCommentTitle);
 // 导出router
 exports = module.exports = router;
 

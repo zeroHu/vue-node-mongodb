@@ -1,6 +1,7 @@
 <template>
     <div class="header">
-        <p class="info-intro">welcome to 尬聊</p>
+        <router-link class="router-link" to="/"><p class="info-intro">welcome to 尬聊</p></router-link>
+        <router-link class="router-link" to="/root" v-if="$store.state.isRoot"><span class="root">管理员页面</span></router-link>
         <p class="info-status">
             <span v-if="$store.state.loginStatus && $store.state.loginStatus.name">
                 hi, {{ $store.state.loginStatus.name }}
@@ -46,5 +47,10 @@
     }
     .info-intro {
         float: left;
+    }
+    .root {
+        margin-left: 20px;
+        color: #f56621;
+        cursor: pointer;
     }
 </style>
