@@ -22,6 +22,7 @@ let UserCommentSchema = new mongoose.Schema({
     content: String,
     commentTitle: { titleId: String, content: String },
     createUser: { userId: String, userName: String },
+    time: String,
     createTime: { type: Date, default: Date.now }
 });
 

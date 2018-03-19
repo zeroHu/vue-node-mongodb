@@ -26,7 +26,10 @@ import hex_sha1 from '../assets/js/sha1.js';
 export default {
   mounted () {
     let odo = this.$route.query && this.$route.query.do;
-    odo && odo === 'register' ? this.isLogin = false : this.isLogin = true
+    let referrer = this.$route.query && this.$route.query.referrer;
+    // 存referrer值
+    this.referrer = referrer;
+    odo && odo === 'register' ? this.isLogin = false : this.isLogin = true;
   },
   data () {
     return {
@@ -43,11 +46,11 @@ export default {
         password: hex_sha1(this.password)
       }).then(res => {
         if (res.data.status === 0) {
-          this.$router.push('/')
+          this.$router.push({ path: this.referrer });
         } else {
           this.name = '';
           this.password = '';
-          alert(res.data.msg)
+          alert(res.data.msg);
         }
       });
     },

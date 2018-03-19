@@ -19,6 +19,7 @@
                     if (res.data.status === 0) {
                         this.$store.commit('storeStatus', null)
                         alert(res.data.msg);
+                        this.$router.go(0);
                     }
                 });
             }

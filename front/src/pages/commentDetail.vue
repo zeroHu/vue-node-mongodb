@@ -12,15 +12,21 @@
                 <h4>评论区</h4>
                 <div class="main">
                     <div class="each" v-for="(item, index) in uCommentInfo">
-                        <span class="tags">{{ index+1 }}楼</span>
+                        <span class="tags">{{ pageSize * (currentPage - 1) + index + 1 }}楼</span>
                         <p class="u-detail">
                             {{ item.content }}
                         </p>
                         <p class="c-info">
                             <span>{{ item.createUser.userName }}</span>
-                            <span>{{ item.createTime }}</span>
+                            <span>{{ item.time || item.createTime }}</span>
                         </p>
                     </div>
+                    <mo-paging
+                        :page-index="currentPage"
+                        :total="count"
+                        :page-size="pageSize"
+                        @change="pageChange">
+                    </mo-paging>
                 </div>
             </div>
             <div class="commit-comment">
@@ -35,29 +41,46 @@
 </template>
 <script>
 import vHeader from '@/components/header.vue';
+import MoPaging from '@/components/pager.vue';
 export default {
     components: {
-        vHeader
+        vHeader,
+        MoPaging
     },
     data () {
         return {
             cId: '',
             cName: '',
             uComment: '',
-            uCommentInfo: []
+            uCommentInfo: [],
+            pageSize: 5 , // 每页显示5条数据
+            currentPage: 1, // 当前页码
+            count: 0 // 总记录数
         }
     },
     mounted () {
         this.cId = this.$route.query && this.$route.query.id
         this.cName = this.$route.query && this.$route.query.name
-        // 请求数据
-        this.$axios.get(`/showcomment?titleid=${this.cId}`).then(res => {
-            if (res.data.status === 0) {
-                this.uCommentInfo = res.data.data
-            }
-        })
+        this.getList()
     },
     methods: {
+        //获取数据
+        getList () {
+            // 请求数据
+            this.$axios.get(`/pshowcomment?titleid=${this.cId}&pageSize=${this.pageSize}&currentPage=${this.currentPage}`).then(res => {
+                if (res.data.status === 0) {
+                    let resdata = res.data.data;
+                    //子组件监听到count变化会自动更新DOM
+                    this.uCommentInfo = resdata.eachData
+                    this.count = resdata.count
+                }
+            })
+        },
+        //从page组件传递过来的当前page
+        pageChange (page) {
+            this.currentPage = page
+            this.getList()
+        },
         sendComment () {
             this.sFlag = true
             if (!this.sFlag) {
@@ -70,7 +93,7 @@ export default {
             }).then(res => {
                 this.sFlag = false
                 if (res.data.status === 0){
-                    alert('添加评论成功')
+                    this.$toast('添加评论成功');
                     setTimeout(() => {
                         this.$router.go(0)
                     }, 2500)

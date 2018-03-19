@@ -2,6 +2,7 @@ const CommentTitle = require('../database/modules').CommentTitle;
 const UserComment = require('../database/modules').UserComment;
 const Rjson = require('../util/rejson');
 const Util = require('../util/util');
+const moment = require('moment');
 
 // 添加评论话题接口
 const addCommentTitle = (req, res) => {
@@ -41,7 +42,7 @@ const showCommentTitle = (req, res) => {
     });
 }
 
-// 更新评论标题接口
+// 更新评论话题接口
 const updateCommentTitle = (req, res) => {
     if (req.session && req.session.level === 'root') {
         Util.UpdataDataBase(req.body.id, {
@@ -76,6 +77,7 @@ const addUserComment = (req, res) => {
             let userCommentData = new UserComment({
                 content: req.body.content,
                 commentTitle: { titleId: req.body.titleid, content: req.body.titlename },
+                time: moment().format('YYYY-MM-DD HH:mm:ss'),
                 createUser: { userId: req.session.userId, userName: req.session.name }
             });
             userCommentData.save((err, doc) => {
@@ -87,6 +89,16 @@ const addUserComment = (req, res) => {
             })
         }
     }
+}
+// 分页展示话题的所有评论
+const pageShowUserComment = (req, res) => {
+    Util.EachQueryDataBase({ "commentTitle.titleId":  req.query.titleid }, req.query.pageSize || 10, req.query.pageSize * (req.query.currentPage - 1)  || 0, UserComment).then(findData => {
+        if (findData) {
+            res.json(Rjson.right(findData));
+        } else {
+            res.json(Rjson.error('sorry~ 没有搜索到数据'));
+        }
+    });
 }
 
 // 展示话题的所有的评论
@@ -105,6 +117,7 @@ exports = module.exports = {
     showCommentTitle: showCommentTitle,
     addUserComment: addUserComment,
     showUserComment: showUserComment,
+    pageShowUserComment: pageShowUserComment,
     updateCommentTitle: updateCommentTitle,
     deleteCommentTitle: deleteCommentTitle
 }
