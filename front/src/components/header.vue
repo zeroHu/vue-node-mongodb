@@ -37,6 +37,7 @@
         background: #daeae8;
         color: #12937c;
         padding: 0 20px;
+        z-index: 1000;
     }
     .no-login {
         cursor: pointer;

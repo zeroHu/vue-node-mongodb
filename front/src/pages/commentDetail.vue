@@ -59,12 +59,18 @@ export default {
     },
     methods: {
         sendComment () {
+            this.sFlag = true
+            if (!this.sFlag) {
+                return;
+            }
             this.$axios.post('/addcomment', {
                 content: this.uComment,
                 titleid: this.cId || '',
                 titlename: this.cName || ''
             }).then(res => {
+                this.sFlag = false
                 if (res.data.status === 0){
+                    alert('添加评论成功')
                     setTimeout(() => {
                         this.$router.go(0)
                     }, 2500)

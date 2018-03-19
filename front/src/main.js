@@ -5,11 +5,15 @@ import App from './App'
 import router from './router'
 import store from './vuex/store.js'
 import axios from './assets/js/axiosConfig.js'
+import VuejsDialog from "vuejs-dialog"
 
 Vue.config.productionTip = false
 
 // 设置axios
 Vue.prototype.$axios = axios
+
+// 设置dialog
+Vue.use(VuejsDialog)
 
 /* eslint-disable no-new */
 new Vue({

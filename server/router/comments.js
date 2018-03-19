@@ -32,15 +32,13 @@ const addCommentTitle = (req, res) => {
 
 // 展示评论话题接口
 const showCommentTitle = (req, res) => {
-    if (req.session && req.session.level === 'root') {
-        Util.QueryDataBase({}, CommentTitle).then(findData => {
-            if (findData && findData.length > 0) {
-                res.json(Rjson.right(findData));
-            } else {
-                res.json(Rjson.error());
-            }
-        });
-    }
+    Util.QueryDataBase({}, CommentTitle).then(findData => {
+        if (findData && findData.length > 0) {
+            res.json(Rjson.right(findData));
+        } else {
+            res.json(Rjson.error());
+        }
+    });
 }
 
 // 更新评论标题接口
