@@ -26,14 +26,27 @@ let UserCommentSchema = new mongoose.Schema({
     createTime: { type: Date, default: Date.now }
 });
 
+// 厨艺
+let FoodSchema = new mongoose.Schema({
+    fTitle: String,
+    fDesc: String,
+    fShareImg: String,
+    step: Array,
+    createUser: { userId: String, userName: String },
+    time: String,
+    createTime: { type: Date, default: Date.now }
+});
+
 // Schema 设置
 UesrSchema.set('collection', 'users');
 CommentTitleSchema.set('collection', 'commenttitles');
 UserCommentSchema.set('collection', 'commentcontents');
+FoodSchema.set('collection', 'foods');
 
 // 导出所有的schemas
 exports = module.exports = {
     UesrSchema: UesrSchema,
     CommentTitleSchema: CommentTitleSchema,
-    UserCommentSchema: UserCommentSchema
+    UserCommentSchema: UserCommentSchema,
+    FoodSchema: FoodSchema
 }

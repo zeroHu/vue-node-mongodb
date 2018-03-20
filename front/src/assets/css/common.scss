@@ -10,14 +10,18 @@
 *:first-child+html .clearfix { zoom: 1; } /* IE7 */
 
 input {
+    box-sizing: border-box;
     width: 200px;
     height: 22px;
     line-height: 22px;
+    border: 1px solid #daeae8;
 }
 
 textarea {
+    box-sizing: border-box;
     border-color: #daeae8;
 }
+
 body {
     background: #f8f8f7;
 }

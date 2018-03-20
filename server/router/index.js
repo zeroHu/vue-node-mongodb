@@ -7,6 +7,7 @@ const app = express();
 // 引入文件
 const users = require('./users');
 const comments = require('./comments');
+const foods = require('./foods');
 
 // 连接数据库
 mongoose.connect('mongodb://localhost/vueexpress');
@@ -34,6 +35,10 @@ router.get('/showcomment', comments.showUserComment);
 router.get('/pshowcomment', comments.pageShowUserComment);
 router.post('/updatecomment', comments.updateCommentTitle);
 router.post('/deletecommenttitle', comments.deleteCommentTitle);
+
+// 菜谱相关
+router.get('/qiniu/token', foods.getToken);
+router.post('/uploadfood', foods.uploadFood);
 // 导出router
 exports = module.exports = router;
 

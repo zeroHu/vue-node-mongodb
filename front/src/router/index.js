@@ -10,6 +10,8 @@ const Login = r => require.ensure([], () => r(require('@/pages/login')), 'Login'
 const Comment = r => require.ensure([], () => r(require('@/pages/comment')), 'Comment')
 const CommentDetail = r => require.ensure([], () => r(require('@/pages/commentDetail')), 'CommentDetail')
 const Root = r => require.ensure([], () => r(require('@/pages/root')), 'Root')
+const Food = r => require.ensure([], () => r(require('@/pages/food')), 'Food')
+const AddFood = r => require.ensure([], () => r(require('@/pages/addFood')), 'AddFood')
 
 const router = new Router({
   mode: 'history',
@@ -42,6 +44,18 @@ const router = new Router({
     }, {
       path: '/root',
       component: Root,
+      meta: {
+        auth: true // 是否需要验证
+      }
+    }, {
+      path: '/food',
+      component: Food,
+      meta: {
+        auth: false // 是否需要验证
+      }
+    }, {
+      path: '/addfood',
+      component: AddFood,
       meta: {
         auth: true // 是否需要验证
       }

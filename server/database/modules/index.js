@@ -7,10 +7,13 @@ const Users = mongoose.model('users', SchemaModules.UesrSchema);
 const CommentTitle = mongoose.model('commenttitles', SchemaModules.CommentTitleSchema);
 // 评论详情表
 const UserComment = mongoose.model('commentcontents', SchemaModules.UserCommentSchema);
+// 厨艺
+const Foods = mongoose.model('foods', SchemaModules.FoodSchema);
 
 // 导出
 exports = module.exports = {
     Users: Users,
     CommentTitle: CommentTitle,
-    UserComment: UserComment
+    UserComment: UserComment,
+    Foods: Foods
 }

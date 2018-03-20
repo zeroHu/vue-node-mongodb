@@ -6,16 +6,18 @@
                 <li>
                     <router-link to="/comment" class="router-link">
                         <div class="main">
-                            <img src="@/assets/images/orange.jpeg" alt="">
+                            <img src="@/assets/images/pinglun.jpeg" alt="">
                         </div>
-                        <div class="text">评论区</div>
+                        <div class="text">讨论区</div>
                     </router-link>
                 </li>
                 <li>
-                    <div class="main">
-                        <img src="@/assets/images/orange.jpeg" alt="">
-                    </div>
-                    <div class="text">厨艺大比拼</div>
+                    <router-link to="/food" class="router-link">
+                        <div class="main">
+                            <img src="@/assets/images/food.jpeg" alt="">
+                        </div>
+                        <div class="text">厨艺大比拼</div>
+                    </router-link>
                 </li>
                 <li>
                     <div class="main">
