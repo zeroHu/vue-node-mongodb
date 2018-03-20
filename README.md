@@ -1,6 +1,22 @@
 
-# 想来用vue 和 node 和 mongodb 做一个完整的系统
+# 伪全栈做的 vue,node,mongodb 前后端语言集于一体的做一个全栈网站
 **项目持续开发中。。。还未完成。敬请期待~**
+### 体验地址
+[尬聊系统体验链接](http://vue.zeroyh.cn/)
+
+### 代码功能概述
+```
+// 前端开发应用点
+1. toast，dialog 组件封装和应用
+2. 分页组件
+待续。。。
+// 后端开发应用点
+1. query update 等查询数据库函数的封装
+2. 分页查询数据库函数的封装
+3. session 管理和记录
+待续。。。
+```
+
 ### 目录结构
 ```
 | front  (vue 搭建的前端 router 由前端控制)
@@ -18,7 +34,12 @@ package.json
 README.md
 .gitignore
 ```
-### 运行需要
+
+### 目录详情介绍
+1. front 运用了vue 框架，vux记录登录状态，vue-router路由管理 axios 网络请求
+2. server 运用了express框架，输出api接口，与mongodb 数据库数据交互
+
+### 项目运行需要
 ```
 1. 安装 mongodb 数据库
 2. 安装 redis
@@ -27,7 +48,8 @@ README.md
 5. npm run fdev (前端vue跑起来)
 6. 打开 localhost:3050
 ```
-### 服务器端nginx配置
+
+### 服务器端 **nginx** 配置
 ```nginx
 # 直接上原封不动的nginx配置
 upstream vuenode {
@@ -64,23 +86,17 @@ server {
     }
 }
 ```
-### 体验地址
-[尬聊系统体验链接](http://vue.zeroyh.cn/)
 
 ### 已完成的功能
 1. 登录功能
 2. 评论话题功能
 3. 管理员管理话题
 4. 前后端的分页功能
+5. toast dialog 组件的简单粗暴封装
 
 ### 未完成功能
-1. dialog toast 等组件封装
-2. 菜谱
-3. ... (未想好)
-
-### 详情介绍
-1. front 运用了vue 框架，vux记录登录状态，vue-router路由管理 axios 网络请求
-2. server 运用了express框架，输出api接口，与mongodb 数据库数据交互
+1. 菜谱
+2. ... (未想好)
 
 ### 最后附上网站首页[美图]几张
 ![首页美图1](http://oqt0cgoq9.bkt.clouddn.com/vue-express.jpg)
