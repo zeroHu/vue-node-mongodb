@@ -9,19 +9,33 @@
             </span>
             <span v-else><router-link :to="{ path: 'login', query: { do: 'register' }}" class="router-link">注册</router-link> | <router-link :to="{ path: 'login', query: { do: 'login' }}" class="router-link">登录</router-link></span>
         </p>
+        <v-modal message="退出登录成功" :button-text="buttonText" :show-dialog="isShowDialog" @dialog-click="dialogClick"></v-modal>
     </div>
 </template>
 <script>
+    import vModal from '@/components/modal.vue';
     export default {
+        components: {
+            vModal
+        },
         methods: {
             clearLogin () {
                 this.$axios.get('/clearLogin').then(res => {
                     if (res.data.status === 0) {
                         this.$store.commit('storeStatus', null)
-                        alert(res.data.msg);
-                        this.$router.go(0);
+                        this.isShowDialog = true;
                     }
                 });
+            },
+            dialogClick (val) {
+                val === 'ok' || 'confirm' ? this.isShowDialog = false : ''
+                this.$router.go(0);
+            }
+        },
+        data () {
+            return {
+                buttonText: ['知道了'],
+                isShowDialog: false
             }
         }
     }

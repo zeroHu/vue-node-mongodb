@@ -18,12 +18,17 @@
         <div class="submit" @click="isLogin ? doLogin() : doRegist()">{{ isLogin ? '登录' : '注册' }}</div>
       </div>
     </div>
+    <v-modal :message="msg" :button-text="buttonText" :show-dialog="isShowDialog" @dialog-click="dialogClick"></v-modal>
   </div>
 </template>
 
 <script>
 import hex_sha1 from '../assets/js/sha1.js';
+import vModal from '@/components/modal.vue';
 export default {
+  components: {
+    vModal
+  },
   mounted () {
     let odo = this.$route.query && this.$route.query.do;
     let referrer = this.$route.query && this.$route.query.referrer;
@@ -35,7 +40,10 @@ export default {
     return {
       name: '',
       password: '',
-      isLogin: true
+      isLogin: true,
+      msg: '',
+      isShowDialog: false,
+      buttonText: ['知道了']
     }
   },
   methods: {
@@ -46,11 +54,13 @@ export default {
         password: hex_sha1(this.password)
       }).then(res => {
         if (res.data.status === 0) {
-          this.$router.push({ path: this.referrer });
+          this.$router.push({ path: this.referrer || '/'});
         } else {
           this.name = '';
           this.password = '';
-          alert(res.data.msg);
+
+          this.msg = res.data.msg;
+          this.isShowDialog = true;
         }
       });
     },
@@ -68,8 +78,13 @@ export default {
           this.password = '';
           this.isLogin = true;
         }
-        alert(res.data.msg);
+        this.msg = res.data.msg;
+        this.isShowDialog = true;
       });
+    },
+    // 接受事件
+    dialogClick (val) {
+      val === 'ok' || 'confirm' ? this.isShowDialog = false : ''
     }
   }
 }
