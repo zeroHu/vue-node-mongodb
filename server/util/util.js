@@ -6,14 +6,15 @@ const AllCount = async (query, DataBase) => {
 
 // 定义普通全部查询的方法
 const QueryDataBase = async (query, DataBase) => {
-    let queryData = await DataBase.find(query).
-                    exec((err, data) => {
-                        if (err) {
-                            return false;
-                        } else {
-                            return data || [];
-                        }
-                    });
+    let queryData =
+    await DataBase.find(query).
+        exec((err, data) => {
+            if (err) {
+                return false;
+            } else {
+                return data || [];
+            }
+        });
     return queryData;
 }
 

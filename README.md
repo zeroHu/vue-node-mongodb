@@ -9,12 +9,13 @@
 // 前端开发应用点
 1. toast，dialog 组件封装和应用
 2. 分页组件
-待续。。。
+3. 上传图片到七牛云
+
 // 后端开发应用点
 1. query update 等查询数据库函数的封装
 2. 分页查询数据库函数的封装
 3. session 管理和记录
-待续。。。
+4. 七牛sdk 获取token
 ```
 
 ### 目录结构
@@ -48,6 +49,19 @@ README.md
 5. npm run fdev (前端vue跑起来)
 6. 打开 localhost:3050
 ```
+
+### 已完成的功能
+1. 登录功能
+2. 评论话题功能
+3. 管理员管理话题
+4. 前后端的分页功能
+5. toast dialog 组件的简单粗暴封装
+7. 上传图片到七牛云，上传菜谱功能
+
+### 未完成功能
+1. 菜谱 待完善
+2. ... (未想好)
+
 
 ### 服务器端 **nginx** 配置
 ```nginx
@@ -87,19 +101,9 @@ server {
 }
 ```
 
-### 已完成的功能
-1. 登录功能
-2. 评论话题功能
-3. 管理员管理话题
-4. 前后端的分页功能
-5. toast dialog 组件的简单粗暴封装
-
-### 未完成功能
-1. 菜谱
-2. ... (未想好)
-
 ### 最后附上网站首页[美图]几张
 ![首页美图1](http://oqt0cgoq9.bkt.clouddn.com/vue-express.jpg)
 ![首页美图2](http://oqt0cgoq9.bkt.clouddn.com/vue-express2.jpg)
 ![首页美图3](http://oqt0cgoq9.bkt.clouddn.com/vue-express3.jpg)
 ![首页美图4](http://oqt0cgoq9.bkt.clouddn.com/vue-express4.jpg)
+![首页美图5](http://oqt0cgoq9.bkt.clouddn.com/vueexpress5.jpg)

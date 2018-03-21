@@ -5,7 +5,19 @@
         </div>
     </transition>
 </template>
-<style lang="scss">
+
+<script>
+export default {
+    data () {
+        return {
+            show: false,
+            message: ""
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
 .toast {
     position: fixed;
     top: 40%;
@@ -33,13 +45,3 @@
   transform: scale(0.8);
 }
 </style>
-<script>
-export default {
-    data () {
-        return {
-            show: false,
-            message: ""
-        }
-    }
-}
-</script>

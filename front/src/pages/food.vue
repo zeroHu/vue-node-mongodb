@@ -1,8 +1,10 @@
 <template>
-    <div class="food clearfix">
-        <router-link to="/addfood" class="router-link add-food">上传自己的食谱吧</router-link>
-        <div class="content clearfix">
-            <h5>美食列表</h5>
+    <div class="food">
+        <div class="content">
+            <div class="header clearfix">
+                <h5>美食列表</h5>
+                <router-link to="/addfood" class="router-link add-food">上传自己的菜肴</router-link>
+            </div>
             <ul class="ul-content">
                 <li v-for="eitem in foodList">
                     <router-link :to="{ name: 'FoodDetail', params: { id: eitem._id }}" class="router-link">
@@ -41,17 +43,23 @@ export default {
         padding: 20px 0;
         width: 940px;
         margin: auto;
-        overflow: hidden;
-        h5 {
-            color: #12937c;
-        }
-        .add-food {
-            float: right;
-        }
+
         .content {
             margin-top: 35px;
             background: #fff;
             padding: 20px;
+            overflow: hidden;
+            .header {
+                h5 {
+                    color: #12937c;
+                    float: left;
+                }
+                .add-food {
+                    padding: 10px 20px;
+                    border: 1px solid #35495e;
+                    float: right;
+                }
+            }
             .ul-content {
                 margin-top: 30px;
                 li {

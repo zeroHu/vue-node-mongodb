@@ -47,7 +47,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .modal {
     position: relative;
     cursor: pointer;
