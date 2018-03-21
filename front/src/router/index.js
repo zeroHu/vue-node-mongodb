@@ -10,8 +10,9 @@ const Login = r => require.ensure([], () => r(require('@/pages/login')), 'Login'
 const Comment = r => require.ensure([], () => r(require('@/pages/comment')), 'Comment')
 const CommentDetail = r => require.ensure([], () => r(require('@/pages/commentDetail')), 'CommentDetail')
 const Root = r => require.ensure([], () => r(require('@/pages/root')), 'Root')
-const Food = r => require.ensure([], () => r(require('@/pages/food')), 'Food')
 const AddFood = r => require.ensure([], () => r(require('@/pages/addFood')), 'AddFood')
+const Food = r => require.ensure([], () => r(require('@/pages/food')), 'Food')
+const FoodDetail = r => require.ensure([], () => r(require('@/pages/foodDetail')), 'FoodDetail')
 
 const router = new Router({
   mode: 'history',
@@ -31,6 +32,7 @@ const router = new Router({
       }
     }, {
       path: '/comment',
+      name: 'Comment',
       component: Comment,
       meta: {
         auth: false // 是否需要验证
@@ -38,24 +40,35 @@ const router = new Router({
     }, {
       path: '/commentdetail',
       component: CommentDetail,
+      name: 'CommentDetail',
       meta: {
         auth: true // 是否需要验证
       }
     }, {
       path: '/root',
       component: Root,
+      name: 'Root',
       meta: {
         auth: true // 是否需要验证
       }
     }, {
       path: '/food',
       component: Food,
+      name: 'Food',
+      meta: {
+        auth: false // 是否需要验证
+      }
+    }, {
+      path: '/food/:id',
+      component: FoodDetail,
+      name: 'FoodDetail',
       meta: {
         auth: false // 是否需要验证
       }
     }, {
       path: '/addfood',
       component: AddFood,
+      name: 'AddFood',
       meta: {
         auth: true // 是否需要验证
       }

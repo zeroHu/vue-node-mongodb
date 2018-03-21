@@ -21,7 +21,7 @@
                 </li>
                 <li>
                     <div class="main">
-                        <img src="@/assets/images/orange.jpeg" alt="">
+                        <img src="@/assets/images/xiannv.jpeg" alt="">
                     </div>
                     <div class="text">来吧，小仙女</div>
                 </li>

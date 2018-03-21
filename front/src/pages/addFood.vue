@@ -1,7 +1,7 @@
 <template>
     <div class="add-food">
         <h5 class="title">上传您喜欢的食物吧</h5>
-        <div>
+        <div class="content">
             <ul>
                 <li>
                     <label for="">食物名称:</label>
@@ -21,6 +21,7 @@
     </div>
 </template>
 <script>
+// 七牛的sdk
 import * as qiniu from 'qiniu-js'
 export default {
     data () {
@@ -37,7 +38,6 @@ export default {
                     let resdata = res.data.data;
                     let token = resdata.uptoken;
                     let file = e.target.files[0];
-                    let filename = e.target.files.name;
                     let config = {
                         useCdnDomain: true,
                         disableStatisticsReport: false,
@@ -61,8 +61,7 @@ export default {
                         },
                         complete (res) {
                             self.$toast('上传成功');
-                            this.shareimg = `http://p5vxzph29.bkt.clouddn.com/${filename}.jpg`
-                            console.log('----upload end----', JSON.stringify(res))
+                            self.shareimg = `http://p5vxzph29.bkt.clouddn.com/${file.name}`
                         }
                     }); // 上传开始
                 } else {
@@ -78,9 +77,6 @@ export default {
             }).then(res => {
                 if (res.data.status === 0){
                     this.$toast('添加食谱成功');
-                    setTimeout(() => {
-                        this.$router.go(0)
-                    }, 2500)
                 }
             })
         }
@@ -116,6 +112,16 @@ export default {
         font-size: 18px;
         margin-bottom: 30px;
         color: #db3b23;
+    }
+    .add-all {
+        cursor: pointer;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        background: #ff9090;
+        text-align: center;
+        margin-left: 150px;
     }
 }
 </style>

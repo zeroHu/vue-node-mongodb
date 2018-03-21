@@ -53,7 +53,30 @@ const uploadFood = (req, res) => {
     });
 }
 
+// 获取所有食物列表
+const getFood = (req, res) => {
+    Util.QueryDataBase({}, Foods).then(findData => {
+        if (findData && findData.length > 0) {
+            res.json(Rjson.right(findData));
+        } else {
+            res.json(Rjson.error());
+        }
+    });
+}
+
+// 获取具体详情
+const getFoodDetail = (req, res) => {
+    Util.QueryDataBase({ "_id": req.query.id }, Foods).then(findData => {
+        if (findData && findData.length > 0) {
+            res.json(Rjson.right(findData));
+        } else {
+            res.json(Rjson.error());
+        }
+    });
+}
 exports = module.exports = {
     getToken: getToken,
-    uploadFood: uploadFood
+    uploadFood: uploadFood,
+    getFood: getFood,
+    getFoodDetail: getFoodDetail
 }

@@ -39,6 +39,8 @@ router.post('/deletecommenttitle', comments.deleteCommentTitle);
 // 菜谱相关
 router.get('/qiniu/token', foods.getToken);
 router.post('/uploadfood', foods.uploadFood);
+router.get('/allfood', foods.getFood);
+router.get('/fooddetail', foods.getFoodDetail);
 // 导出router
 exports = module.exports = router;
 
