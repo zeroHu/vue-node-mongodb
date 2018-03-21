@@ -78,7 +78,7 @@ const addUserComment = (req, res) => {
             let userCommentData = new UserComment({
                 content: req.body.content,
                 commentTitle: { titleId: req.body.titleid, content: req.body.titlename },
-                time: moment().format('YYYY-MM-DD HH:mm:ss');,
+                time: moment().format('YYYY-MM-DD HH:mm:ss'),
                 createUser: { userId: req.session.userId, userName: req.session.name }
             });
             userCommentData.save((err, doc) => {

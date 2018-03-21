@@ -39,7 +39,7 @@ const uploadFood = (req, res) => {
         fTitle: req.body.ftitle,
         fDesc: req.body.fdesc,
         fShareImg: req.body.shareimg || '',
-        time: moment().format('YYYY-MM-DD HH:mm:ss');,
+        time: moment().format('YYYY-MM-DD HH:mm:ss'),
         createUser: { userId: req.session.userId, userName: req.session.name }
     });
     FoodsData.save(function(err, doc) {
