@@ -3,9 +3,6 @@ const UserComment = require('../database/modules').UserComment;
 const Rjson = require('../util/rejson');
 const Util = require('../util/util');
 const moment = require('moment');
-
-let nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
-
 // 添加评论话题接口
 const addCommentTitle = (req, res) => {
     // 这里做 只有管理员有权限添加话题的操作
@@ -81,7 +78,7 @@ const addUserComment = (req, res) => {
             let userCommentData = new UserComment({
                 content: req.body.content,
                 commentTitle: { titleId: req.body.titleid, content: req.body.titlename },
-                time: nowtime,
+                time: moment().format('YYYY-MM-DD HH:mm:ss');,
                 createUser: { userId: req.session.userId, userName: req.session.name }
             });
             userCommentData.save((err, doc) => {

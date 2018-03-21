@@ -5,8 +5,6 @@ const Config = require('../util/qiniuConfig.js');
 const moment = require('moment');
 const qiniu = require("qiniu");
 
-let nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
-
 // 获取七牛token 上传服务器
 const getToken = (req, res) => {
     // 配置
@@ -41,7 +39,7 @@ const uploadFood = (req, res) => {
         fTitle: req.body.ftitle,
         fDesc: req.body.fdesc,
         fShareImg: req.body.shareimg || '',
-        time: nowtime,
+        time: moment().format('YYYY-MM-DD HH:mm:ss');,
         createUser: { userId: req.session.userId, userName: req.session.name }
     });
     FoodsData.save(function(err, doc) {
