@@ -1,18 +1,20 @@
 <template>
     <div class="food">
         <div class="content">
-            <div class="header clearfix">
+            <div class="header">
                 <p class="title">美食列表</p>
                 <p class="add-food" @click="gotoAdd">上传自己的菜肴</p>
             </div>
-            <ul class="ul-content">
-                <li v-for="eitem in foodList">
-                    <router-link :to="{ name: 'FoodDetail', params: { id: eitem._id }}" class="router-link">
-                        <img :src="eitem.fShareImg" alt="">
-                        <p>{{ eitem.fTitle }}</p>
-                    </router-link>
-                </li>
-            </ul>
+            <div class="list">
+                <ul class="ul-content">
+                    <li v-for="eitem in foodList">
+                        <router-link :to="{ name: 'FoodDetail', params: { id: eitem._id }}" class="router-link">
+                            <img :src="eitem.fShareImg" alt="">
+                            <p>{{ eitem.fTitle }}</p>
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -67,9 +69,8 @@ export default {
                 background: #ff9090;
                 color: #fff;
                 text-align: center;
+                padding: 10px 0;
                 width: 180px;
-                height: 40px;
-                line-height: 40px;
                 border: 1px solid #ff9090;
                 float: right;
             }
