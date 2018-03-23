@@ -49,9 +49,8 @@ export default {
                         params: {},
                         mimeType: null
                     };
-                    var observable = qiniu.upload(file, file.name, token, putExtra, config)
-
-                    var subscription = observable.subscribe({
+                    let observable = qiniu.upload(file, file.name, token, putExtra, config)
+                    let subscription = observable.subscribe({
                         next (res) {
                         },
                         error (err) {
@@ -77,6 +76,9 @@ export default {
             }).then(res => {
                 if (res.data.status === 0){
                     this.$toast('添加食谱成功');
+                     setTimeout(() => {
+                        self.$router.push('/food')
+                    }, 2500)
                 }
             })
         }

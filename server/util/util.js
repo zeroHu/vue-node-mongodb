@@ -20,9 +20,10 @@ const QueryDataBase = async (query, DataBase) => {
 
 // 定义分页查询
 const EachQueryDataBase = async (query, limit, skip, DataBase) => {
+    console.log('start page query');
     // 查询分页数据
     let eachQuqeryData = async () => {
-        return await DataBase.find(query).limit(limit).skip(skip).
+        return await DataBase.find(query).limit(Number(limit)).skip(Number(skip)).
             exec((err, data) => {
                 if (err) {
                     return false;
