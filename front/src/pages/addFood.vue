@@ -4,15 +4,16 @@
         <div class="content">
             <ul>
                 <li>
-                    <label for="">食物名称:</label>
+                    <span>食物名称:</span>
                     <input type="text" v-model="ftitle">
                 </li>
                 <li>
-                    <label for="">食物简介:</label>
+                    <span>食物简介:</span>
                     <textarea v-model="fdesc"></textarea>
                 </li>
                 <li>
-                    <label for="">宣传图:</label>
+                    <span>宣传图：</span>
+                    <label for="file" class="lable-file-input">上传宣传图</label>
                     <input type="file" id="file" ref="myFiles" class="custom-file-input" @change="uploadFile" multiple>
                 </li>
             </ul>
@@ -77,6 +78,9 @@ export default {
             }).then(res => {
                 if (res.data.status === 0){
                     this.$toast('添加食谱成功');
+                    setTimeout(() => {
+                        this.$router.push('/food');
+                    }, 2500)
                 }
             })
         }
@@ -101,7 +105,9 @@ export default {
     ul {
         li {
             margin-bottom: 20px;
-            label {
+            span {
+                display: inline-block;
+                width: 120px;
                 vertical-align: top;
                 color: #fda6ab;
             }
@@ -113,6 +119,17 @@ export default {
         margin-bottom: 30px;
         color: #db3b23;
     }
+    .custom-file-input {
+        display: none;
+    }
+    .lable-file-input {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 20px;
+        cursor: pointer;
+        margin-left: 20px;
+        font-size: 14px;
+    }
     .add-all {
         cursor: pointer;
         width: 200px;
@@ -121,7 +138,7 @@ export default {
         color: #fff;
         background: #ff9090;
         text-align: center;
-        margin-left: 150px;
+        margin-left: 145px;
     }
 }
 </style>

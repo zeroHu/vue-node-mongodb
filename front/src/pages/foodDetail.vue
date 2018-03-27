@@ -1,13 +1,10 @@
 <template>
     <div class="food-detail">
         <div>
-            <p>食物名称：{{ foodDetail.fTitle }}</p>
-            <p>食物详情： {{ foodDetail.fDesc }}</p>
-            <div>
-                <img :src="foodDetail.fShareImg" alt="" class="img-share">
-            </div>
-            <p>创建时间：{{ foodDetail.time }}</p>
-            <p>创建人：{{ foodDetail.createUser && foodDetail.createUser.userName }}</p>
+            <img :src="foodDetail.fShareImg" alt="" class="img-share">
+            <p><label for="">食物名称：</label>{{ foodDetail.fTitle }}</p>
+            <p><label for="">食物详情：</label> {{ foodDetail.fDesc }}</p>
+            <p class="p-info">{{ foodDetail.createUser && foodDetail.createUser.userName }} {{ foodDetail.time }}</p>
         </div>
     </div>
 </template>
@@ -37,12 +34,26 @@ export default {
     padding: 20px;
     width: 940px;
     margin: auto;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 20px;
     .img-share {
         width: 300px;
         height: 300px;
+        float: left;
+        margin-right: 20px;
+    }
+    .p-info {
+        margin-top: 20px;
+        color: #999;
     }
     p {
         line-height: 30px;
+        font-size: 14px;
+        color: #666;
+        label {
+            color: #333;
+        }
     }
 }
 </style>
