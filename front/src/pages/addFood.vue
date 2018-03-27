@@ -50,9 +50,8 @@ export default {
                         params: {},
                         mimeType: null
                     };
-                    var observable = qiniu.upload(file, file.name, token, putExtra, config)
-
-                    var subscription = observable.subscribe({
+                    let observable = qiniu.upload(file, file.name, token, putExtra, config)
+                    let subscription = observable.subscribe({
                         next (res) {
                         },
                         error (err) {
