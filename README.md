@@ -17,7 +17,7 @@
 3. 分页查询数据库函数的封装
 4. session 管理和记录
 5. 七牛sdk 获取token
-
+6. nodejs 制作海报（海报模板上添加标题，头像，二维码等内容）
 ```
 
 ### 目录结构
@@ -59,7 +59,7 @@ README.md
 4. 前后端的分页功能
 5. toast dialog 组件的简单粗暴封装
 7. 上传图片到七牛云，上传菜谱功能
-
+8. nodejs 给模板海报添加内容
 ### 未完成功能
 1. 菜谱 待完善
 2. ... (未想好)
@@ -109,3 +109,4 @@ server {
 ![首页美图3](http://oqt0cgoq9.bkt.clouddn.com/vue-express3.jpg)
 ![首页美图4](http://oqt0cgoq9.bkt.clouddn.com/vue-express4.jpg)
 ![首页美图5](http://oqt0cgoq9.bkt.clouddn.com/vueexpress5.jpg)
+![海报页](http://vue.zeroyh.cn/postmaker/img/1534329350578.png)
