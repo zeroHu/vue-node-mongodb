@@ -114,11 +114,11 @@ const showUserComment = (req, res) => {
 }
 
 exports = module.exports = {
-    addCommentTitle: addCommentTitle,
-    showCommentTitle: showCommentTitle,
-    addUserComment: addUserComment,
-    showUserComment: showUserComment,
-    pageShowUserComment: pageShowUserComment,
-    updateCommentTitle: updateCommentTitle,
-    deleteCommentTitle: deleteCommentTitle
+    addCommentTitle,
+    showCommentTitle,
+    addUserComment,
+    showUserComment,
+    pageShowUserComment,
+    updateCommentTitle,
+    deleteCommentTitle
 }

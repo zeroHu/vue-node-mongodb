@@ -20,10 +20,12 @@
                     </router-link>
                 </li>
                 <li>
-                    <div class="main">
-                        <img src="@/assets/images/xiannv.jpeg" alt="">
-                    </div>
-                    <div class="text">来吧，小仙女</div>
+                    <router-link to="/postmaker" class="router-link">
+                        <div class="main">
+                            <img src="@/assets/images/xiannv.jpeg" alt="">
+                        </div>
+                        <div class="text">来吧，制作海报, 牛牛飞起来~~~~</div>
+                    </router-link>
                 </li>
                 <li>
                     <div class="main">

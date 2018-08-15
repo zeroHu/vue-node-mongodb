@@ -73,8 +73,8 @@ const getFoodDetail = (req, res) => {
     });
 }
 exports = module.exports = {
-    getToken: getToken,
-    uploadFood: uploadFood,
-    getFood: getFood,
-    getFoodDetail: getFoodDetail
+    getToken,
+    uploadFood,
+    getFood,
+    getFoodDetail
 }

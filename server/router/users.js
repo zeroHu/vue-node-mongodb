@@ -14,7 +14,7 @@ const index = (req, res) => {
 }
 
 // 用户注册接口函数
-const adduser = (req, res) => {
+const addUser = (req, res) => {
     Util.QueryDataBase({ name: req.body.name }, Users).then(findData => {
         if (findData && findData.length > 0) {
             res.json(Rjson.error('这个网名已经有人使用了，请换一个~'));
@@ -78,9 +78,9 @@ const clearLogin = (req, res) => {
 }
 
 exports = module.exports = {
-    index: index,
-    addUser: adduser,
-    login: login,
-    userInfo: userInfo,
-    clearLogin: clearLogin
+    index,
+    addUser,
+    login,
+    userInfo,
+    clearLogin
 }

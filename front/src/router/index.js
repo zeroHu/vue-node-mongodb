@@ -13,6 +13,7 @@ const Root = r => require.ensure([], () => r(require('@/pages/root')), 'Root')
 const AddFood = r => require.ensure([], () => r(require('@/pages/addFood')), 'AddFood')
 const Food = r => require.ensure([], () => r(require('@/pages/food')), 'Food')
 const FoodDetail = r => require.ensure([], () => r(require('@/pages/foodDetail')), 'FoodDetail')
+const PostMaker = r => require.ensure([], () => r(require('@/pages/postMaker')), 'PostMaker')
 
 const router = new Router({
   mode: 'history',
@@ -71,6 +72,13 @@ const router = new Router({
       name: 'AddFood',
       meta: {
         auth: true // 是否需要验证
+      }
+    }, {
+      path: '/postmaker',
+      component: PostMaker,
+      name: 'PostMaker',
+      meta: {
+        auth: false // 是否需要验证
       }
     }]
 });

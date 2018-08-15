@@ -1,6 +1,15 @@
 .DS_Store
 node_modules/
 /front/dist/
+
+
+/server/static/images/poster/
+/server/static/images/qrcode/
+/server/static/images/saveImg/
+/server/static/images/water/
+
+
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

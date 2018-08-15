@@ -8,7 +8,7 @@ const app = express();
 const users = require('./users');
 const comments = require('./comments');
 const foods = require('./foods');
-
+const image = require('./image');
 // 连接数据库
 mongoose.connect('mongodb://localhost/vueexpress');
 
@@ -41,6 +41,12 @@ router.get('/qiniu/token', foods.getToken);
 router.post('/uploadfood', foods.uploadFood);
 router.get('/allfood', foods.getFood);
 router.get('/fooddetail', foods.getFoodDetail);
+
+
+
+// 生成海报
+
+router.get('/poster',image.poster );
 // 导出router
 exports = module.exports = router;
 

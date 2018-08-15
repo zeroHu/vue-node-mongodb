@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('express-hbs');
+const config = require('./config');
 const app = express();
 
 // 中间件定义
@@ -18,11 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // redis配置
-const options = {
-    "host": "127.0.0.1",
-    "port": "6379",
-    "ttl": 60 * 60 * 24 * 30, //Session的有效期为30天
-};
+const options = config.redis;
 // session
 app.use(cookieParser('vue express mongodb'));
 app.use(session({
@@ -36,7 +33,7 @@ app.use(session({
 app.use('/api', router);
 
 // 监听端口号运行
-app.listen(3040, function() {
+app.listen(config.port, function() {
     console.log('vue-express-mongodb port is 3040 is running');
 });
 
