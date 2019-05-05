@@ -61,7 +61,7 @@ export default {
                         },
                         complete (res) {
                             self.$toast('上传成功');
-                            self.shareimg = `http://p5vxzph29.bkt.clouddn.com/${file.name}`
+                            self.shareimg = `http://upload.zeroyh.cn/${file.name}`
                         }
                     }); // 上传开始
                 } else {
