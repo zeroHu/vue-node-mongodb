@@ -93,6 +93,9 @@ export default {
                     height: 140px;
                 }
                 p {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     line-height: 40px;
                     color: #b1a058;
                 }
