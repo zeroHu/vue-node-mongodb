@@ -104,9 +104,9 @@ server {
 ```
 
 ### 最后附上网站首页[美图]几张
-![首页美图1](http://oqt0cgoq9.bkt.clouddn.com/vue-express.jpg)
-![首页美图2](http://oqt0cgoq9.bkt.clouddn.com/vue-express2.jpg)
-![首页美图3](http://oqt0cgoq9.bkt.clouddn.com/vue-express3.jpg)
-![首页美图4](http://oqt0cgoq9.bkt.clouddn.com/vue-express4.jpg)
-![首页美图5](http://oqt0cgoq9.bkt.clouddn.com/vueexpress5.jpg)
+![首页美图1](http://static.zeroyh.cn/vue-express.jpg)
+![首页美图2](http://static.zeroyh.cn/vue-express2.jpg)
+![首页美图3](http://static.zeroyh.cn/vue-express3.jpg)
+![首页美图4](http://static.zeroyh.cn/vue-express4.jpg)
+![首页美图5](http://static.zeroyh.cn/vueexpress5.jpg)
 ![海报页](http://vue.zeroyh.cn/postmaker/img/1534329350578.png)
